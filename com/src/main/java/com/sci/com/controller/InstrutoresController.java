@@ -49,7 +49,7 @@ public class InstrutoresController {
     }
 
     @PostMapping("/verificar-certificados")
-    public ResponseEntity<String> verificarCertificadosExpirados() {
+    public ResponseEntity<String> verificarCertificadosExpirados1() {
         instrutorService.verificarCertificadosExpirados();
         return ResponseEntity.status(HttpStatus.OK).body("Verificação de certificados concluída.");
     }
