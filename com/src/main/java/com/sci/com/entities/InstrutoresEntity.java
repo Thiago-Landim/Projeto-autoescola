@@ -1,18 +1,20 @@
-package com.sci.com.Entities;
+package com.sci.com.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "TB_Instrutores")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@Builder
 public class InstrutoresEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -25,7 +27,7 @@ public class InstrutoresEntity implements Serializable {
     @Column(name = "Nome_Instrutor")
     private String nomeInstrutor;
     @Column(name = "Certificado_Expira_EM")
-    private int diasRenovacaoCertificado;
+    private LocalDate dataCertificado;
     @Column(name = "Endereco")
     private String endereco;
     @Column(name = "Telefone")
@@ -33,7 +35,7 @@ public class InstrutoresEntity implements Serializable {
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "Funcionario_ATIVO")
-    private boolean ativo;
+    private boolean funcionarioAtivo;
 
 
 

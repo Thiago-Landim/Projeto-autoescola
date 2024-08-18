@@ -1,7 +1,7 @@
 package com.sci.com.mapper;
 
-import com.sci.com.DTO.InstrutoresDto;
-import com.sci.com.Entities.InstrutoresEntity;
+import com.sci.com.dto.InstrutoresDto;
+import com.sci.com.entities.InstrutoresEntity;
 import lombok.experimental.UtilityClass;
 import org.modelmapper.ModelMapper;
 

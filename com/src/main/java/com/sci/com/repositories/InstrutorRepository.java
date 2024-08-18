@@ -1,6 +1,6 @@
 package com.sci.com.repositories;
 
-import com.sci.com.Entities.InstrutoresEntity;
+import com.sci.com.entities.InstrutoresEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;

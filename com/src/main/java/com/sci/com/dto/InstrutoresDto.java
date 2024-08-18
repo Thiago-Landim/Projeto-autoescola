@@ -1,6 +1,8 @@
-package com.sci.com.DTO;
+package com.sci.com.dto;
 
 import lombok.*;
+
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,12 +13,12 @@ import lombok.*;
 public class InstrutoresDto {
 
     private Long idInstrutor;
-    private int diasRenovacaoCertificado;
+    private LocalDate dataCertificado;
     private String nomeInstrutor;
     private String endereco;
     private String telefone;
     private String email;
-    private boolean ativo;
+    private boolean funcionarioAtivo;
 
 
 }
