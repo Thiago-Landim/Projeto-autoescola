@@ -1,8 +1,13 @@
 package com.sci.com.DTO;
 
-import lombok.Data;
+import lombok.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
+@Builder
+@Getter
+@Setter
 public class InstrutoresDto {
 
     private Long idInstrutor;

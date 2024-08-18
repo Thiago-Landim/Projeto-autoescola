@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +26,8 @@ public class InstrutoresController {
         List<InstrutoresDto> todosDTO = new ArrayList<>();
 
         for (InstrutoresEntity entity: todos){
-            InstrutoresDto.add(IntrutoresMapper.InstrutoresToDto(entity));
 
+          todosDTO.add(IntrutoresMapper.InstrutoresToDto(entity));
         }
         return ResponseEntity.status(HttpStatus.OK).body(todosDTO);
     }
@@ -40,6 +37,12 @@ public class InstrutoresController {
         InstrutoresEntity instrutoresEntity = instrutorService.buscaID(id);
         return ResponseEntity.status(HttpStatus.OK).body(IntrutoresMapper.InstrutoresToDto(instrutoresEntity));
 
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<InstrutoresDto> salvarInstrutorcontroller(@RequestBody InstrutoresDto instrutoresDto){
+        InstrutoresEntity entity = instrutorService.salvarInstrutor(IntrutoresMapper.DtoToEntity(instrutoresDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(IntrutoresMapper.InstrutoresToDto(entity));
     }
 
 }
