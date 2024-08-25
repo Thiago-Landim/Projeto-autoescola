@@ -13,7 +13,7 @@
 
     .container-informacao{
         position: absolute;
-        background-color: indianred;
+
         top: 25%;
         width: 77%;
         height: 50%;
@@ -26,6 +26,68 @@
         font-size: 30px;
         right: 50%;
 
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+
+    .form-container {
+        position: absolute;
+
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        width: 100%;
+        left: 10%;
+
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="date"] {
+        width: 70%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        ;
+    }
+
+    .form-group input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    .form-group .checkbox-label {
+        display: inline-block;
+        font-weight: normal;
+    }
+
+    .form-group button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .form-group button:hover {
+        background-color: #0056b3;
     }
 
 
@@ -87,10 +149,31 @@
         </div>
 
         <div class="container-informacao">
-        <div class="titContainer">Instrutor </div>
+
+
+            <div class="form-container">
+
+                <form>
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" value="${certificado.nome}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" value="${certificado.email}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-certificado">Data do Certificado:</label>
+                        <input type="date" id="data-certificado" value="${certificado.dataCertificado}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="certificado-valido">Certificado Válido:</label>
+                        <input type="text" id="certificado-valido" value="${certificado.valido ? 'Sim' : 'Não'}" readonly>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-
 
 </main>
 
