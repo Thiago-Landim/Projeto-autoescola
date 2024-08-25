@@ -1,0 +1,176 @@
+
+.BackNav{
+    position: relative;
+    background-color: black;
+    height:60px;
+    display: flex;
+
+}
+.nomeSystem{
+    position: absolute;
+    background-color: gray;
+    height: 30px;
+    width: 500px;
+    border-radius: 20px;
+    top: 25%;
+
+
+
+
+}
+.fotoLogin{
+    width: 40px;
+    height: 40px;
+    background-color: darkgray;
+    border-radius: 50%;
+    position: absolute;
+    right: 1%;
+    bottom: 1%;
+    margin: 10px;
+
+}
+.nomeLogin{
+    position: absolute;
+    background-color: gray;
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    top: 25%;
+    right: 5%;
+
+}
+.conteudoContainer{
+    position: relative;
+    background-color: aqua;
+    top: 50px;
+    height: 500px;
+    display: flex;
+}
+
+.fotoPessoal{
+    position: absolute;
+    background-color: blueviolet;
+    border-radius: 10px;
+    height: 50%;
+    width: 20%;
+
+    left: 1%;
+    top: 25%;
+}
+
+.buscaPessoais{
+    position: absolute;
+    background-color: gray;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    height: 65%;
+    width: 20%;
+    left:1%;
+    top:20%
+
+}
+.conteinerDeInfo{
+    background-color:#caaee9;
+    position: absolute;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    width: 70%;
+    height: 90%;
+    right: 1%;
+    top: 5%;
+
+
+}
+.containerForm{
+    background-color: aliceblue;
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top : 5%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.CPF{
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+
+    position: absolute;
+
+    left: 25%;
+    top: 10%;
+
+}
+.cpf-input{
+    position: absolute;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+
+    left: 8%;
+    height: 10%;
+    width: 80%;
+    top:40%;
+
+
+}
+.botaoForm{
+    background-color: orange;
+    position: absolute;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 39%;
+    height: 10%;
+    bottom: 32%;
+    right:12%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+}
+.botaoForm:hover {
+    background-color: red; /* Cor de fundo ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada no hover */
+
+}
+
+.containerCabec {
+    position: relative;
+    background-color: orange;
+    width: 100%;
+    height: 20%;
+    border-radius: 10px 10px 0 0;
+}
+
+.logoCabec {
+
+    width: 20%;
+}
+
+.tituloEscola {
+    position: absolute;
+
+    width: 40%;
+    height: 80%;
+    left: 25%;
+    top: 8%;
+    font-weight: bold;
+    text-align: center;
+    font-size: 200%;
+}
+
+.container-stop {
+
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    right: 20%;
+
+}
+.stop{
+    position: absolute;
+    height: 80%;
+    right: 40%;
+    top: 10%;
+}
