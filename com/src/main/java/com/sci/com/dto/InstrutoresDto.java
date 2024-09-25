@@ -12,13 +12,14 @@ import java.time.LocalDate;
 @Setter
 public class InstrutoresDto {
 
-    private Long idInstrutor;
+    private String idInstrutor;
     private LocalDate dataCertificado;
     private String nomeInstrutor;
     private String endereco;
     private String telefone;
     private String email;
     private boolean funcionarioAtivo;
+    private String cpf;
 
 
 }

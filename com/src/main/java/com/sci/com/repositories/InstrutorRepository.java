@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @EnableJpaRepositories
-public interface InstrutorRepository extends JpaRepository<InstrutoresEntity, Long> {
+public interface InstrutorRepository extends JpaRepository<InstrutoresEntity, Long > {
+    InstrutoresEntity findByCpf(String cpf);
 }

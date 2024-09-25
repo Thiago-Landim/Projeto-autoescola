@@ -21,24 +21,31 @@ public class InstrutoresEntity implements Serializable {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)  // Ajustado para AUTO, se o id não for numérico
+    @Column(name = "Id_Instrutor")
     private Long idInstrutor;
 
-    @Column(name = "Nome_Instrutor")
+    @Column(name = "Nome_Instrutor", length = 255)
     private String nomeInstrutor;
+
     @Column(name = "Certificado_Expira_EM")
     private LocalDate dataCertificado;
-    @Column(name = "Endereco")
+
+    @Column(name = "Endereco", length = 255)
     private String endereco;
-    @Column(name = "Telefone")
+
+    @Column(name = "Telefone", length = 20)
     private String telefone;
-    @Column(name = "EMAIL")
+
+    @Column(name = "EMAIL", length = 255)
     private String email;
+
     @Column(name = "Funcionario_ATIVO")
     private boolean funcionarioAtivo;
-
-
-
-
-
+    @Column(name = "CPF", length = 14, unique = true)
+    private String cpf;  // Adicione esta linha
 }
+
+
+
+

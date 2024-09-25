@@ -21,21 +21,57 @@ document.getElementById('cpf').addEventListener('input', function(event) {
         event.target.value = value;
 });
 
-function trazPeloID() {
+function trazPeloID(id) {
+        if (!id) {
+                alert("ID não fornecido.");
+                return;
+        }
+
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/processa", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.open("GET", "/sci/" + id, true); // URL com o ID
+        xhr.setRequestHeader("Content-Type", "application/json"); // Configuração do tipo de conteúdo
 
         xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
-                                alert(xhr.responseText);
+                                alert(xhr.responseText); // Exibe a resposta do servidor
                         } else {
-                                alert("Erro ao processar a solicitação.");
+                                alert("Erro ao processar a solicitação: " + xhr.statusText);
                         }
                 }
         };
 
         xhr.send(); // Envia a solicitação para o servidor
 }
+
+
+        function buscarPorCPF() {
+        const cpf = document.getElementById('cpf').value;
+        if (cpf) {
+        fetch(`/sci?cpf=${cpf}`)
+        .then(response => response.json())
+        .then(data => {
+        if (data) {
+        document.getElementById('nome').value = data.nome;
+        document.getElementById('email').value = data.email;
+        document.getElementById('data-certificado').value = data.dataCertificado;
+        document.getElementById('certificado-valido').value = data.valido ? 'Sim' : 'Não';
+} else {
+        alert('Instrutor não encontrado.');
+}
+})
+        .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao buscar instrutor.');
+});
+} else {
+        alert('Digite um CPF válido.');
+}
+}
+
+
+
+
+
+
 

@@ -1,4 +1,4 @@
-package com.sci.com.components;
+/*package com.sci.com.components;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -38,21 +38,25 @@ public class GerenciadorCertificados {
     }
 
     private void enviarEmailExpiracao(InstrutoresEntity instrutor) {
+        try {
+            String destinatario = instrutor.getEmail();
+            String assunto = "Certificado Expirado";
+            String mensagem = String.format(
+                    "Prezado %s,\n\nInformamos que seu certificado expirou e seu status foi atualizado para inativo.\n\nAtenciosamente,\nAuto Escola",
+                    instrutor.getNomeInstrutor()
+            );
 
-
-        String destinatario = instrutor.getEmail();
-        String assunto = "Certificado Expirado";
-        String mensagem = String.format("Prezado %s,\n\nInformamos que seu certificado expirou e seu status foi atualizado para inativo.\n\nAtenciosamente,\nAuto Escola",
-                instrutor.getNomeInstrutor());
-
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("seu.email@gmail.com"); // Usando o e-mail configurado no properties
-        message.setTo(destinatario);
-        message.setSubject(assunto);
-        message.setText(mensagem);
-
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom("seu.email@gmail.com"); // Certifique-se de que esse e-mail está configurado no seu properties
+            message.setTo(destinatario);
+            message.setSubject(assunto);
+            message.setText(mensagem);
 
             javaMailSender.send(message);
+            logger.info("E-mail enviado para: {}", destinatario);
 
+        } catch (Exception e) {
+            logger.error("Erro ao enviar e-mail para {}: {}", instrutor.getEmail(), e.getMessage());
+        }
     }
-}
+}*/

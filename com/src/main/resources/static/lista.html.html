@@ -1,0 +1,206 @@
+<html><head><base href="https://autoescola-instrutores.com/listar">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listar Instrutores - Auto Escola</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+  }
+  header {
+    background: #35424a;
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+  }
+  header h1 {
+    margin: 0;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .main-nav {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+  }
+  .main-nav li {
+    padding: 0 20px;
+  }
+  .main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  .main-nav a:hover {
+    color: #e8491d;
+  }
+  .list-container {
+    background: #ffffff;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  .btn {
+    display: inline-block;
+    background: #e8491d;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .btn:hover {
+    background: #ff6347;
+  }
+  .search-container {
+    margin-bottom: 20px;
+  }
+  .search-container input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  footer {
+    background: #35424a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Auto Escola - Sistema de Gerenciamento de Instrutores</h1>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="https://autoescola-instrutores.com/">Início</a></li>
+          <li><a href="https://autoescola-instrutores.com/cadastrar">Cadastrar Instrutor</a></li>
+          <li><a href="https://autoescola-instrutores.com/listar">Listar Instrutores</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="list-container">
+      <h2>Lista de Instrutores</h2>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Pesquisar instrutor...">
+        <button class="btn" onclick="searchInstrutor()">Buscar</button>
+      </div>
+      <table id="instrutoresTable">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Categoria</th>
+            <th>Credencial</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Os dados dos instrutores serão inseridos aqui dinamicamente -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 Auto Escola - Sistema de Gerenciamento de Instrutores. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    // Dados simulados de instrutores
+    const instrutores = [
+      { nome: "João Silva", cpf: "123.456.789-00", email: "joao@email.com", telefone: "(11) 98765-4321", categoria: "AB", credencial: "INS12345" },
+      { nome: "Maria Santos", cpf: "987.654.321-00", email: "maria@email.com", telefone: "(11) 91234-5678", categoria: "B", credencial: "INS67890" },
+      { nome: "Pedro Oliveira", cpf: "456.789.123-00", email: "pedro@email.com", telefone: "(11) 95555-5555", categoria: "A", credencial: "INS24680" }
+    ];
+
+    function populateTable(data) {
+      const tableBody = document.querySelector("#instrutoresTable tbody");
+      tableBody.innerHTML = "";
+      
+      data.forEach(instrutor => {
+        const row = tableBody.insertRow();
+        row.innerHTML = `
+          <td>${instrutor.nome}</td>
+          <td>${instrutor.cpf}</td>
+          <td>${instrutor.email}</td>
+          <td>${instrutor.telefone}</td>
+          <td>${instrutor.categoria}</td>
+          <td>${instrutor.credencial}</td>
+          <td>
+            <button class="btn" onclick="editInstrutor('${instrutor.cpf}')">Editar</button>
+            <button class="btn" onclick="deleteInstrutor('${instrutor.cpf}')">Excluir</button>
+          </td>
+        `;
+      });
+    }
+
+    function searchInstrutor() {
+      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+      const filteredInstrutores = instrutores.filter(instrutor => 
+        instrutor.nome.toLowerCase().includes(searchTerm) ||
+        instrutor.cpf.includes(searchTerm) ||
+        instrutor.email.toLowerCase().includes(searchTerm)
+      );
+      populateTable(filteredInstrutores);
+    }
+
+    function editInstrutor(cpf) {
+      // Aqui você implementaria a lógica para editar um instrutor
+      console.log(`Editando instrutor com CPF: ${cpf}`);
+      alert(`Funcionalidade de edição para o instrutor com CPF ${cpf} não implementada.`);
+    }
+
+    function deleteInstrutor(cpf) {
+      // Aqui você implementaria a lógica para excluir um instrutor
+      console.log(`Excluindo instrutor com CPF: ${cpf}`);
+      if (confirm(`Tem certeza que deseja excluir o instrutor com CPF ${cpf}?`)) {
+        alert(`Instrutor com CPF ${cpf} excluído com sucesso.`);
+        // Na prática, você removeria o instrutor do array e atualizaria a tabela
+        populateTable(instrutores);
+      }
+    }
+
+    // Inicializar a tabela com todos os instrutores
+    window.onload = () => populateTable(instrutores);
+  </script>
+</body></html>

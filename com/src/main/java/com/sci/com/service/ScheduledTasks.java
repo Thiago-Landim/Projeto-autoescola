@@ -1,4 +1,4 @@
-package com.sci.com.service;
+/*package com.sci.com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -14,8 +14,9 @@ public class ScheduledTasks {
         this.instrutorService = instrutorService;
     }
 
-    @Scheduled(cron = "0 * * * * ?") // Executa diariamente à meia-noite
-    public void verificarCertificadosExpirados() {
-        instrutorService.verificarCertificadosExpirados();
-    }
+   // @Scheduled(cron = "0 * * * * ?") // Executa diariamente à meia-noite
+    //public void verificarCertificadosExpirados() {
+      //  instrutorService.verificarCertificadosExpirados();
+   // }
 }
+*/

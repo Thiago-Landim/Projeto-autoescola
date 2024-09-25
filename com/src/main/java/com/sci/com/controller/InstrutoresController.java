@@ -21,58 +21,41 @@ import java.util.List;
 public class InstrutoresController {
 
     @Autowired
-    InstrutorService instrutorService;
+    private InstrutorService instrutorService;
 
     @GetMapping
-    public ResponseEntity<List<InstrutoresDto>> findAll(){
+    public ResponseEntity<List<InstrutoresDto>> findAll() {
         List<InstrutoresEntity> todos = instrutorService.toList();
         List<InstrutoresDto> todosDTO = new ArrayList<>();
-
-        for (InstrutoresEntity entity: todos){
-
+        for (InstrutoresEntity entity : todos) {
             todosDTO.add(IntrutoresMapper.InstrutoresToDto(entity));
         }
         return ResponseEntity.status(HttpStatus.OK).body(todosDTO);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<InstrutoresDto> trazPeloID(@PathVariable Long id){
-        InstrutoresEntity instrutoresEntity = instrutorService.buscaID(id);
-        return ResponseEntity.status(HttpStatus.OK).body(IntrutoresMapper.InstrutoresToDto(instrutoresEntity));
-
+    @GetMapping("/buscar")
+    public ResponseEntity<InstrutoresDto> buscarPorCPF(@RequestParam("cpf") String cpf) {
+        InstrutoresEntity instrutoresEntity = instrutorService.buscarPorCPF(cpf);
+        if (instrutoresEntity != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(IntrutoresMapper.InstrutoresToDto(instrutoresEntity));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
     @PostMapping("/save")
-    public ResponseEntity<InstrutoresDto> salvarInstrutorcontroller(@RequestBody InstrutoresDto instrutoresDto){
+    public ResponseEntity<InstrutoresDto> salvarInstrutorcontroller(@RequestBody InstrutoresDto instrutoresDto) {
         InstrutoresEntity entity = instrutorService.salvarInstrutor(IntrutoresMapper.DtoToEntity(instrutoresDto));
         return ResponseEntity.status(HttpStatus.CREATED).body(IntrutoresMapper.InstrutoresToDto(entity));
     }
 
-    @PostMapping("/verificar-certificados")
+    /*@PostMapping("/verificar-certificados")
     public ResponseEntity<String> verificarCertificadosExpirados1() {
         instrutorService.verificarCertificadosExpirados();
         return ResponseEntity.status(HttpStatus.OK).body("Verificação de certificados concluída.");
-    }
-
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiErrors handleValidationExceptions(MethodArgumentNotValidException exception){
-        BindingResult bindingResult = exception.getBindingResult();
+    */}
 
 
-        return new ApiErrors(bindingResult);
-
-
-    }
-
-    @ExceptionHandler(BusinessException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiErrors handleBusinessException(BusinessException exception){
-        return new ApiErrors(exception);
-
-
-    }
-}
 
 
 

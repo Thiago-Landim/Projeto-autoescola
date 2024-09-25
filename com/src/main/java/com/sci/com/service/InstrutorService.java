@@ -1,6 +1,6 @@
 package com.sci.com.service;
 
-import com.sci.com.components.GerenciadorCertificados;
+//import com.sci.com.components.GerenciadorCertificados;
 import com.sci.com.entities.InstrutoresEntity;
 import com.sci.com.repositories.InstrutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,29 +20,27 @@ public class InstrutorService {
     @Autowired
     private InstrutorRepository instrutorRepository;
 
-    @Autowired
-    private GerenciadorCertificados gerenciadorCertificados;
+    //@Autowired
+    //private GerenciadorCertificados gerenciadorCertificados;
+
+
+    public InstrutoresEntity buscarPorCPF(String cpf) {
+        return instrutorRepository.findByCpf(cpf); // Supondo que o método findByCpf está implementado no repositório
+    }
 
     public List<InstrutoresEntity> toList() {
         return instrutorRepository.findAll();
     }
 
-    public InstrutoresEntity findByIdOrThrowBadRequestException(Long id) {
-        return instrutorRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Instrutor não Encontrado"));
+    public InstrutoresEntity salvarInstrutor(InstrutoresEntity instrutoresEntity) {
+        return instrutorRepository.save(instrutoresEntity);
     }
 
-    public InstrutoresEntity buscaID(Long id) {
-        return findByIdOrThrowBadRequestException(id);
+   // public void verificarCertificadosExpirados() {
     }
 
-    public InstrutoresEntity salvarInstrutor(InstrutoresEntity entity) {
-        return instrutorRepository.save(entity);
-    }
+    // public void verificarCertificadosExpirados() {
 
-    public void verificarCertificadosExpirados() {
-        List<InstrutoresEntity> todos = toList();
-        gerenciadorCertificados.verificarCertificados(todos);
-    }
-}
+    //}
+
 
